@@ -40,7 +40,7 @@ Instructions for installing Docker are available here: [Installing Docker](https
 
 ## Service Launch
 ```bash
-git clone http://path-to-git
+git clone https://github.com/akablockchain1/node-express-monitoring.git
 cd name_of_project
 chmod +x scale_up.sh
 docker-compose up -d
