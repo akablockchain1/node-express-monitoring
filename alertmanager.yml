@@ -1,0 +1,12 @@
+route:
+  group_by: ['HighCPUUsageAlert']
+  group_wait: 10s
+  repeat_interval: 1m
+  receiver: 'scale-up-hook'
+
+receivers:
+  - name: 'scale-up-hook'
+    webhook_configs:
+      - url: 'http://app/scale-up'
+        # send_resolved: true
+        # max_alerts: 1

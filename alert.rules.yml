@@ -1,0 +1,22 @@
+groups:
+- name: AvailabilityAlerts
+  rules:
+  - alert: ServiceNotAvailable
+    expr: up{job="nodejs_app_metrics"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Service is not available"
+      description: "The service at app:80/metrics is not responding."
+- name: HighCPUUsageAlert
+  rules:
+  - alert: HighCPUUsage
+    expr: process_cpu_seconds_total{job="docker"} > 100
+    for: 1m
+    labels:
+      severity: 'critical'
+    annotations:
+      summary: 'High CPU usage detected'
+      description: 'CPU usage is over 100 seconds total for the past minute.'
+      replicas: '5'  # Предполагаемое значение для масштабирования

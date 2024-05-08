@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+
+  jmeter:
+    image: justb4/jmeter:5.4
+    volumes:
+      - ./jmeter_plan.jmx:/jmeter_plan.jmx
+      - ./jmeter_results:/jmeter_results
+    command: "-n -t /jmeter_plan.jmx -l /jmeter_results/results.csv -e -o /jmeter_results/report"
+    depends_on:
+      - app
