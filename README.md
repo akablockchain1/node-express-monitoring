@@ -65,3 +65,4 @@ docker-compose -f docker-compose-jmeter.yml down
 
 - **Volumes Mapping**: for saving logs and metric data.
 - **Functionality Segmentation of the Application**: splitting `app.js` into two parts: the main application and a component for interacting with the Docker-API for scaling.
+- **CI/CD**: implement CI/CD via github actions.
