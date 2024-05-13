@@ -13,6 +13,7 @@ services:
       - ./scale_up.sh:/.scale_up.sh
     mem_limit: 50m
     cpus: 0.1
+   # restart: unless-stopped
     networks:
       - app-network
 
